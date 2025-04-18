@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Login Page</title>
+        <link rel="stylesheet" href="css/loginPage.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="form-title">Login</h1>
+            <div class="form-group">
+            <label for="">Email :</label>
+            <input type="text" id="loginEmail" placeholder="Enter your Email" />
+            </div>
+            <div class="form-group">
+            <label for="">Password :</label>
+            <input type="password" id="loginPassword" placeholder="Enter your Password"/>
+            </div>
+            <p class="error-message" id="fillMsg">Fill the inputs first</p>
+            <p class="error-message" id="wrongMsg">Your email or password is incorrect</p>
+            <button id="loginBtn" onclick="login()">Login</button>
+            <p class="signup-link">Don't have an account? <a href="signUp.html">Sign Up</a></p>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>
