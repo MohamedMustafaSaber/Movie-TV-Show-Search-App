@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/RegisterPage.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="inputForm">
+            <h1 class="form-title">Registeration</h1>
+            <div class="form-group">
+                <label>Name :</label>
+                <input type="text" onkeyup="userNameValidation()" id="signUpUserName" placeholder="Enter your name">
+                <div id="nameAlert" class="error-message">The Name is Invalid</div>
+            </div>
+            <div class="form-group">
+                <label>Email :</label>
+                <input type="email" onkeyup="userEmailValidation()" id="signUpEmail" placeholder="Enter your email">
+                <div id="emailAlert" class="error-message">The Email is Invalid</div>
+            </div>
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" onkeyup="userPasswordValidation()" id="signUpPassword" placeholder="Enter your password">
+                <div id="passAlert" class="error-message">The password is Invalid</div>
+            </div>
+            <div class="form-group">
+                <div class="success-message" id="success">Success</div>
+                <div class="error-message" id="checkInput">All inputs are required</div>
+                <div class="error-message" id="checkExist">Email already exists</div>
+                <button id="signUpButton" onclick="signUp()">Sign Up</button>
+            </div>
+            <div class="signup-link">
+                Already have an account? <a href="loginPage.html" id="goToLoginPage">Sign in</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
