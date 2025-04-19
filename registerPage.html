@@ -15,20 +15,19 @@
             <div class="form-group">
                 <label>Name :</label>
                 <input type="text" onkeyup="userNameValidation()" id="signUpUserName" placeholder="Enter your name">
-                <div id="nameAlert" class="error-message">The Name is Invalid</div>
+                <div id="nameAlert" class="error-message">Enter valid name Minimum 3 letters</div>
             </div>
             <div class="form-group">
                 <label>Email :</label>
                 <input type="email" onkeyup="userEmailValidation()" id="signUpEmail" placeholder="Enter your email">
-                <div id="emailAlert" class="error-message">The Email is Invalid</div>
+                <div id="emailAlert" class="error-message">Enter Valid Email eg: user@example.com</div>
             </div>
             <div class="form-group">
                 <label>Password :</label>
                 <input type="password" onkeyup="userPasswordValidation()" id="signUpPassword" placeholder="Enter your password">
-                <div id="passAlert" class="error-message">The password is Invalid</div>
+                <div id="passAlert" class="error-message">Enter valid Password Minimum 5 letters</div>
             </div>
             <div class="form-group">
-                <div class="success-message" id="success">Success</div>
                 <div class="error-message" id="checkInput">All inputs are required</div>
                 <div class="error-message" id="checkExist">Email already exists</div>
                 <button id="signUpButton" onclick="signUp()">Sign Up</button>
@@ -39,7 +38,7 @@
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/loginRegisterPage.js"></script>
 </body>
 
 </html>

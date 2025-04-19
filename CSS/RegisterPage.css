@@ -41,7 +41,6 @@ input[type="password"] {
   border: none;
   border-radius: 4px;
   background-color: #fff;
-  color: var(--font-color);
   box-sizing: border-box;
   border: var(--border-height) solid var(--border-color);
   margin-top: 10px;
@@ -76,12 +75,24 @@ button:hover {
   text-decoration: none;
 }
 
-.success-message {
-  color: #4caf50;
+.valid {
+  border: 2px solid #4caf50 !important;
+}
+
+.invalid {
+  border: 2px solid #ff4d4d !important;
+}
+
+.error-message, .checkExist {
+  color: #ff4d4d;
+  font-size: 0.8rem;
+  margin-top: 5px;
   display: none;
 }
 
-.error-message {
-  color: #ff4d4d;
-  display: none;
+.error-message.visible {
+  display: block;
+}
+.checkExist.visible {
+  display: block;
 }

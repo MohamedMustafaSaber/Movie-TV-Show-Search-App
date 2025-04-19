@@ -11,18 +11,18 @@
         <div class="container">
             <h1 class="form-title">Login</h1>
             <div class="form-group">
-            <label for="">Email :</label>
+            <label for="email">Email :</label>
             <input type="text" id="loginEmail" placeholder="Enter your Email" />
             </div>
             <div class="form-group">
-            <label for="">Password :</label>
+            <label for="password">Password :</label>
             <input type="password" id="loginPassword" placeholder="Enter your Password"/>
             </div>
-            <p class="error-message" id="fillMsg">Fill the inputs first</p>
+            <div class="error-message" id="checkInput">All inputs are required</div>
             <p class="error-message" id="wrongMsg">Your email or password is incorrect</p>
             <button id="loginBtn" onclick="login()">Login</button>
             <p class="signup-link">Don't have an account? <a href="registerPage.html">Sign Up</a></p>
         </div>
-        <script src="js/main.js"></script>
+        <script src="js/loginRegisterPage.js"></script>
     </body>
 </html>
