@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="CSS/Home.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Noxe</div>
+    <nav style="float: left;">
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV show</a>
+      <a href="#">People</a>
+      <a href="#">About</a>
+      <a href="#">Networks</a>
+    </nav>
+    <div class="search">
+      <input type="text" id="search" placeholder="Search">
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <a href="#" class="logout">Logout</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="trending-section">
+      <h2>Trending Movies to Watch Now</h2>
+      <p>Most watched movies by days</p>
+      <div class="card-container" id="movie-list"></div>
+    </section>
+
+    <section class="trending-section">
+      <h2>Trending TV to Watch Now</h2>
+      <p>Most watched movies by days</p>
+      <div class="card-container" id="tv-list"></div>
+    </section>
+  </main>
+
+  <script src="JS/Home.js"></script>
+</body>
+</html>
