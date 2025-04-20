@@ -56,7 +56,7 @@ function login() {
                     loginPassword.value === userInfo[i].password
                 ) {
                     localStorage.setItem("sessionUserName", userInfo[i].name);
-                    return;
+                    window.location.href = "/Home.html";
                 }else{
                     document.getElementById("wrongMsg").classList.add("visible");
                 } 
