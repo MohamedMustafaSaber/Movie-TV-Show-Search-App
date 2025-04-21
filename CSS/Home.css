@@ -5,7 +5,7 @@ body {
   font-family: var(--main-font);
   background-color: var(--bg-color);
   color: var(--font-color);
-  padding-top: 80px; /* Add padding to account for fixed header */
+  padding-top: 80px; 
 }
 
 html {
@@ -18,12 +18,12 @@ header {
   justify-content: space-between;
   padding: 20px 40px;
   background-color: #12131c;
-  position: fixed; /* Make header fixed */
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Ensure header stays above other content */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
 }
 
 .logo {
@@ -50,7 +50,7 @@ nav a:hover {
   color: #00bcd4;
 }
 
-/* Add underline effect on hover */
+
 nav a::after {
   content: '';
   position: absolute;
@@ -114,10 +114,11 @@ nav a:hover::after {
   margin-left: 15px;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: bolder;
 }
 
 .logout:hover {
-  color: #00bcd4;
+  color: rgb(244, 82, 82);
 }
 
 main {
@@ -126,7 +127,7 @@ main {
 
 .trending-section {
   margin-bottom: 50px;
-  scroll-margin-top: 100px; /* Adjust for fixed header */
+  scroll-margin-top: 100px; 
 }
 
 .trending-section h2 {

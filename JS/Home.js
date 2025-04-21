@@ -43,13 +43,17 @@ else{
       }
     });
     const data = await response.json();
-    people = data.results.map(person => ({
-      title: person.name,
-      img: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
-      rating: person.popularity
-    }));
+    const people = data.results
+      .filter(person => person.gender === 2 && person.profile_path) 
+      .map(person => ({
+        title: person.name,
+        img: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
+        rating: person.popularity
+      }));
+  
     renderCards(people, 'People-list');
   }
+  
   function renderCards(data, containerId) {
     var container = document.getElementById(containerId);
     container.innerHTML = '';
