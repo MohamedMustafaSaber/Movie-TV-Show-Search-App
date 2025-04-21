@@ -14,6 +14,7 @@ else{
     });
     const data = await response.json();
     movies = data.results.map(movie => ({
+      id: movie.id,
       title: movie.title,
       img: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
       rating: movie.vote_average
@@ -29,6 +30,7 @@ else{
     });
     const data = await response.json();
     tvShows = data.results.map(tvShow => ({
+      id: tvShow.id,
       title: tvShow.name,
       img: `https://image.tmdb.org/t/p/w500${tvShow.poster_path}`,
       rating: tvShow.vote_average
@@ -46,6 +48,7 @@ else{
     const people = data.results
       .filter(person => person.gender === 2 && person.profile_path) 
       .map(person => ({
+        id: person.id,
         title: person.name,
         img: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
         rating: person.popularity
@@ -65,6 +68,10 @@ else{
         <div class="card-rating">${item.rating}</div>
         <div class="card-title">${item.title}</div>
       `;
+      const type= containerId.split('-')[0];
+      card.addEventListener('click',()=>{
+        window.location.href = `/details.html?id=${item.id}&type=${type}`
+      })
       container.appendChild(card);
     });
   }
@@ -77,6 +84,7 @@ else{
     renderCards(filteredTV, 'tv-list');
     renderCards(filteredPeople, 'People-list');
   }
+
   fetchTrendingMovies();
   fetchTrendingTvShow();
   fetchTrendingPeople();
@@ -87,3 +95,15 @@ function logout() {
   localStorage.removeItem("sessionUserName");
   window.location.href = "/loginPage.html";
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const hash = window.location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
+  }
+});
