@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburgerBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active'); 
+      this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+  });
+
 const params = new URLSearchParams(window.location.search);
 const Id = params.get('id');
 var type = params.get('type');
@@ -6,7 +16,6 @@ const backButton = document.getElementById('back-button');
 if (type === "People") {
     type = 'person'
 }
-
 
 
 
@@ -24,7 +33,7 @@ async function fetchDetails() {
         }
         
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         
         renderDetails(data);
         
@@ -71,11 +80,7 @@ function renderDetails(data) {
     } else {
         // معلومات فيلم أو مسلسل
         const releaseDate = data.release_date || data.first_air_date;
-        const formattedDate = releaseDate ? new Date(releaseDate).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }) : 'Unknown';
+        const formattedDate = releaseDate ? new Date(releaseDate).toLocaleDateString('en-US') : 'Unknown';
 
         const voteAverage = data.vote_average ? data.vote_average.toFixed(1) : 'N/A';
 
@@ -112,6 +117,6 @@ function renderError() {
 fetchDetails();
 
 function logout() {
-    localStorage.removeItem("sessionUserName");
-    window.location.href = "/loginPage.html";
+    sessionStorage.removeItem("sessionUserName");
+    window.location.href = "loginPage.html";
 }

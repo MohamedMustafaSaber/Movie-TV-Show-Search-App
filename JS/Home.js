@@ -1,5 +1,14 @@
-if (!localStorage.getItem("sessionUserName")) {
-  window.location.href = "/loginPage.html";
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburgerBtn = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  hamburgerBtn.addEventListener('click', function() {
+    navLinks.classList.toggle('active'); 
+    this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+  });
+});
+if (!sessionStorage.getItem("sessionUserName")) {
+  window.location.href = "loginPage.html";
 }
 else{
   let movies = [];
@@ -17,7 +26,7 @@ else{
       id: movie.id,
       title: movie.title,
       img: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-      rating: movie.vote_average
+      rating:  movie.vote_average
     }));
     renderCards(movies, 'movie-list');
   }
@@ -46,7 +55,7 @@ else{
     });
     const data = await response.json();
     const people = data.results
-      .filter(person => person.gender === 2 && person.profile_path) 
+      .filter(person =>  person.profile_path ) 
       .map(person => ({
         id: person.id,
         title: person.name,
@@ -62,15 +71,21 @@ else{
     container.innerHTML = '';
     data.forEach(item => {
       var card = document.createElement('div');
+      if (item.rating < 1) {
+        item.rating *= 10;
+      }else if (item.rating > 10) {
+        item.rating /= 10;
+        item.rating += 5;
+      }
       card.className = 'card';
       card.innerHTML = `
         <img src="${item.img}" alt="${item.title}">
-        <div class="card-rating">${item.rating}</div>
+        <div class="card-rating">${Math.round(item.rating * 10)/10}</div>
         <div class="card-title">${item.title}</div>
       `;
       const type= containerId.split('-')[0];
       card.addEventListener('click',()=>{
-        window.location.href = `/details.html?id=${item.id}&type=${type}`
+        window.location.href = `details.html?id=${item.id}&type=${type}`
       })
       container.appendChild(card);
     });
@@ -92,8 +107,8 @@ else{
 }
 
 function logout() {
-  localStorage.removeItem("sessionUserName");
-  window.location.href = "/loginPage.html";
+  sessionStorage.removeItem("sessionUserName");
+  window.location.href = "loginPage.html";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -1,11 +1,11 @@
 @import url('variables.css');
-
+@import url('MediaQuery.css');
 body {
   margin: 0;
   font-family: var(--main-font);
   background-color: var(--bg-color);
   color: var(--font-color);
-  padding-top: 80px; 
+  padding-top: 80px;
 }
 
 html {
@@ -18,12 +18,12 @@ header {
   justify-content: space-between;
   padding: 20px 40px;
   background-color: #12131c;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -121,13 +121,24 @@ nav a:hover::after {
   color: rgb(244, 82, 82);
 }
 
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+
+
 main {
   padding: 20px 40px;
 }
 
 .trending-section {
   margin-bottom: 50px;
-  scroll-margin-top: 100px; 
+  scroll-margin-top: 100px;
 }
 
 .trending-section h2 {
@@ -190,3 +201,96 @@ main {
   border-radius: 20px;
   font-weight: bold;
 }
+
+
+@media (max-width: 1200px) {
+    header {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    nav {
+      margin: 1rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .search {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    main {
+      margin-top: 50px;
+    }
+  }
+  
+  @media (max-width: 820px) {
+    .logo {
+      font-size: 1.5rem;
+    }
+  
+    nav {
+      gap: 0.8rem;
+    }
+  
+    nav a {
+      font-size: 0.9rem;
+    }
+  
+    .search input {
+      width: 80%;
+      margin-bottom: 0.5rem;
+    }
+  
+    .social-icons {
+      gap: 0.5rem;
+    }
+  
+    .logout {
+      margin-top: 0.5rem;
+    }
+  
+    main {
+      margin-top: 70px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .logo {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+  
+    .menu-toggle {
+      display: flex;
+      order: 1;
+    }
+  
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s ease-out;
+    }
+  
+    .search input {
+      width: 50%;
+      margin-bottom: 0.5rem;
+    }
+  
+    .nav-links.active {
+      display: flex;
+      max-height: 500px;
+    }
+  
+    main {
+      margin-top: 100px;
+    }
+  }

@@ -8,7 +8,7 @@ let loginBtn = document.getElementById("loginBtn");
 let signUpButton = document.getElementById("signUpButton");
 let accountExistMsg = document.getElementById("checkExist");
 
-let username = localStorage.getItem("sessionUserName");
+let username = sessionStorage.getItem("sessionUserName");
 let userInfo = JSON.parse(localStorage.getItem("users")) || [];
 
 function signUp() {
@@ -32,7 +32,7 @@ function signUp() {
                 };
                 userInfo.push(user);
                 localStorage.setItem("users", JSON.stringify(userInfo));
-                window.location.href = "/loginPage.html";    
+                window.location.href = "loginPage.html";    
             }
             
         }
@@ -55,8 +55,8 @@ function login() {
                     loginEmail.value.toLowerCase() === userInfo[i].email.toLowerCase() &&
                     loginPassword.value === userInfo[i].password
                 ) {
-                    localStorage.setItem("sessionUserName", userInfo[i].name);
-                    window.location.href = "/Home.html";
+                    sessionStorage.setItem("sessionUserName", userInfo[i].name);
+                    window.location.href = "Home.html";
                 }else{
                     document.getElementById("wrongMsg").classList.add("visible");
                 } 
@@ -121,8 +121,7 @@ function userPasswordValidation() {
 
 function isExist() {
     for (let i = 0; i < userInfo.length; i++) {
-        if (
-            userInfo[i].name.toLowerCase() === userNameInput.value.toLowerCase() ||
+        if (  
             userInfo[i].email.toLowerCase() === userEmailInput.value.toLowerCase()
         ) {
             accountExistMsg.classList.remove("hidden");
@@ -134,16 +133,8 @@ function isExist() {
 }
 
 
-
-function displayUsername() {
-    let welcomeEl = document.getElementById("welcomeUsername");
-    if (welcomeEl && username) {
-        welcomeEl.textContent = "Welcome " + username;
-    }
-}
-
 function logout() {
-    localStorage.removeItem("sessionUserName");
+    sessionStorage.removeItem("sessionUserName");
 }
 
 
