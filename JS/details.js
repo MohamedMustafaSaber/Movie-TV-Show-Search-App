@@ -33,7 +33,7 @@ async function fetchDetails() {
         }
         
         const data = await response.json();
-        // console.log(data);
+        
         
         renderDetails(data);
         
