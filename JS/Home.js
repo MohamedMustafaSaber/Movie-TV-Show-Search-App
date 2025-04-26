@@ -17,7 +17,7 @@ else{
       id: movie.id,
       title: movie.title,
       img: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-      rating: movie.vote_average
+      rating: Number(movie.vote_average.toFixed(1))
     }));
     renderCards(movies, 'movie-list');
   }
@@ -33,7 +33,7 @@ else{
       id: tvShow.id,
       title: tvShow.name,
       img: `https://image.tmdb.org/t/p/w500${tvShow.poster_path}`,
-      rating: tvShow.vote_average
+      rating: Number(tvShow.vote_average.toFixed(1))
     }));
     renderCards(tvShows, 'tv-list');
   }
@@ -51,7 +51,7 @@ else{
         id: person.id,
         title: person.name,
         img: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
-        rating: person.popularity
+        rating: Number(person.popularity.toFixed(1))
       }));
   
     renderCards(people, 'People-list');
