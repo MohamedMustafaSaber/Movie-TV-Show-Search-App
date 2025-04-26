@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="CSS/Home.css">
+  <title>Help Center</title>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Noxe</div>
+    <nav style="float: left;">
+      <a href="Home.html">Home</a>
+      <a href="Home.html">Movies</a>
+      <a href="Home.html">TV show</a>
+      <a href="Home.html">People</a>
+      <a href="helpCenter.html">Help Center</a>
+      <a href="favorites.html">favourites</a>
+    </nav>
+    <div class="search">
+      <input type="text" id="search" placeholder="Search">
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <a href="#" class="logout" onclick="logout()">Logout</a>
+    </div>
+  </header>
+
+  <main>
+    <div style="font-size: larger;">
+      <h1>Noxe Help Center</h1>
+      <p>Our support community is always around to help</p><br>
+      <li>Need more help? Visit the official <a href="https://iti.gov.eg/home" target="_blank" style="text-decoration: none; color: var(--light-bg-color);">Noxe support
+          ITI community</a> powered by ITI.</li><br>
+      <li>Issues logging in to Noxe? Get <a href="#" style="text-decoration: none; color: var(--light-bg-color);">login help.</a>
+      </li>
+      <h3>Industry professional, not a member yet? <a href="registerPage.html"
+          style="text-decoration: none; color: var(--light-bg-color);">Join NoxePro.</a></h3>
+    </div>
+  </main>
+  <script>
+    function logout() {
+      localStorage.removeItem("sessionUserName");
+      window.location.href = "loginPage.html";
+    }
+  </script>
+</body>
+
+</html>

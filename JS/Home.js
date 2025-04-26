@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const hamburgerBtn = document.querySelector('.menu-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
-  hamburgerBtn.addEventListener('click', function() {
+  menuToggle.addEventListener('click', function() {
     navLinks.classList.toggle('active'); 
-    this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    this.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
   });
 });
 if (!sessionStorage.getItem("sessionUserName")) {
@@ -26,11 +26,7 @@ else{
       id: movie.id,
       title: movie.title,
       img: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-<<<<<<< HEAD
       rating:  movie.vote_average
-=======
-      rating: Number(movie.vote_average.toFixed(1))
->>>>>>> bc89ca4af78e351742d0c1c78f06488ba0879f02
     }));
     renderCards(movies, 'movie-list');
   }
@@ -46,7 +42,7 @@ else{
       id: tvShow.id,
       title: tvShow.name,
       img: `https://image.tmdb.org/t/p/w500${tvShow.poster_path}`,
-      rating: Number(tvShow.vote_average.toFixed(1))
+      rating: tvShow.vote_average
     }));
     renderCards(tvShows, 'tv-list');
   }
@@ -64,7 +60,7 @@ else{
         id: person.id,
         title: person.name,
         img: `https://image.tmdb.org/t/p/w500${person.profile_path}`,
-        rating: Number(person.popularity.toFixed(1))
+        rating: person.popularity
       }));
   
     renderCards(people, 'People-list');
@@ -73,7 +69,11 @@ else{
   function renderCards(data, containerId) {
     var container = document.getElementById(containerId);
     container.innerHTML = '';
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     data.forEach(item => {
+      const isFavorite = favorites.some(fav => fav.id == item.id && fav.type == containerId.split('-')[0]);
+      const heartClass = isFavorite ? 'fas fa-heart' : 'far fa-heart';
+
       var card = document.createElement('div');
       if (item.rating < 1) {
         item.rating *= 10;
@@ -86,14 +86,35 @@ else{
         <img src="${item.img}" alt="${item.title}">
         <div class="card-rating">${Math.round(item.rating * 10)/10}</div>
         <div class="card-title">${item.title}</div>
+        <button class="favorite-btn" onclick="toggleFavorite(event, '${item.id}', '${item.title}', '${item.img}', '${item.rating}', '${containerId.split('-')[0]}')">
+          <i class="${heartClass}"></i>
+        </button>
       `;
-      const type= containerId.split('-')[0];
-      card.addEventListener('click',()=>{
-        window.location.href = `details.html?id=${item.id}&type=${type}`
-      })
+      card.addEventListener('click', (e) => {
+        if (!e.target.closest('.favorite-btn')) {
+          window.location.href = `details.html?id=${item.id}&type=${containerId.split('-')[0]}`;
+   }
+});    
       container.appendChild(card);
     });
   }
+
+  function toggleFavorite(event, id, title, img, rating, type) {
+  
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favIndex = favorites.findIndex(item => item.id == id && item.type == type);
+  
+    if (favIndex === -1) {
+      favorites.push({ id, title, img, rating, type });
+      event.currentTarget.querySelector('i').className = 'fas fa-heart'; // filled
+    } else {
+      favorites.splice(favIndex, 1); 
+      event.currentTarget.querySelector('i').className = 'far fa-heart'; // empty
+    }
+  
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
   function search(){
     var searchWord = document.getElementById('search').value.toLowerCase();
     var filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchWord));
