@@ -15,9 +15,9 @@ if (!sessionStorage.getItem("sessionUserName")) {
           <img src="${item.img}" alt="${item.title}">
           <div class="card-rating">${item.rating}</div>
           <div class="card-title">${item.title}</div>
-         <button class="favorite-btn" onclick="toggleFavorite(event, '${item.id}', '${item.type}')">
-            <i class="fas fa-heart"></i>
-         </button>
+          <button class="favorite-btn" onclick="toggleFavorite(event, '${item.id}', '${item.type}')">
+              <i class="fas fa-heart"></i>
+          </button>
 
         `;
         card.addEventListener('click', (e) => {
@@ -57,5 +57,4 @@ function logout() {
     localStorage.removeItem("sessionUserName");
     window.location.href = "loginPage.html";
   }
-
 }
